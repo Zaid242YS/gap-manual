@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Contractor Start-Gap Compass | User's Manual</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --green:#1f5d3a; --green-d:#0f3d2a; --green-l:#e6f0e9;
+  --gold:#b8902f; --gold-l:#f5ecd2; --ink:#1d2a22; --muted:#5d6b62;
+  --bg:#faf6ea; --card:#fff; --line:#d9d2bb; --red:#a33a2a; --amber:#b9791a;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:16px}
+body{margin:0;font-family:'Amiri',Georgia,'Times New Roman',serif;font-size:18px;line-height:1.6;color:var(--ink);background:var(--bg)}
+h1,h2,h3,h4{font-family:'Amiri',Georgia,serif;color:var(--green-d);line-height:1.25;margin:0 0 .5em}
+h1{font-size:2.1rem} h2{font-size:1.6rem;border-bottom:2px solid var(--gold);padding-bottom:4px;margin-top:1.6em} h3{font-size:1.25rem;margin-top:1.2em} h4{font-size:1.05rem}
+p{margin:0 0 .85em} ul,ol{margin:.3em 0 .9em 1.3em;padding:0} li{margin-bottom:.3em}
+a{color:var(--green)}
+code,.kbd{font-family:Consolas,Menlo,monospace;font-size:.85em;background:var(--green-l);border:1px solid #b7d1bf;border-radius:4px;padding:0 5px}
+.btnref{display:inline-block;background:var(--gold);color:#fff;border-radius:5px;padding:0 9px;font-size:.88em;white-space:nowrap}
+.btnref.g{background:var(--green)} .btnref.o{background:#fff;color:var(--green-d);border:1px solid var(--green)} .btnref.r{background:#fff;color:var(--red);border:1px solid var(--red)}
+.tabref{display:inline-block;background:var(--green-d);color:#fff;border-radius:4px;padding:0 8px;font-size:.88em;white-space:nowrap}
+header.cover{background:linear-gradient(135deg,var(--green-d),var(--green));color:#fff;border-bottom:4px solid var(--gold);text-align:center;padding:30px 16px 24px}
+.basmala{font-size:2.1rem;color:var(--gold-l);direction:rtl;margin-bottom:6px}
+header.cover h1{color:#fff;margin:0}
+header.cover .sub{color:#dfe9e2;font-size:1.05rem}
+header.cover .meta{margin-top:10px;font-size:.9rem;color:#cfe0d4}
+.layout{max-width:1160px;margin:0 auto;padding:20px 16px 50px;display:grid;grid-template-columns:260px 1fr;gap:28px}
+aside.toc{position:sticky;top:12px;align-self:start;max-height:calc(100vh - 24px);overflow:auto;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px 16px}
+aside.toc h4{margin-bottom:6px}
+aside.toc ol{list-style:none;margin:0;padding:0}
+aside.toc li{margin:0}
+aside.toc a{display:block;text-decoration:none;color:var(--ink);padding:3px 6px;border-radius:5px;font-size:.95rem}
+aside.toc a:hover{background:var(--green-l)}
+.tocbtn{display:none}
+.printbtn{font-family:inherit;font-size:.95rem;border:1px solid var(--gold);background:var(--gold);color:#fff;padding:7px 12px;border-radius:6px;cursor:pointer;margin-top:10px;width:100%}
+main section{scroll-margin-top:12px}
+.box{border-radius:8px;padding:11px 15px;margin:14px 0;border:1px solid;border-left-width:5px}
+.box.tip{background:var(--green-l);border-color:#b7d1bf;border-left-color:var(--green)}
+.box.note{background:var(--gold-l);border-color:#e3d29b;border-left-color:var(--gold)}
+.box.warn{background:#f8e4df;border-color:#e3b8af;border-left-color:var(--red)}
+.box b.lead{display:block;margin-bottom:2px;color:var(--green-d)}
+.box.warn b.lead{color:var(--red)}
+.steps{counter-reset:s;list-style:none;margin-left:0}
+.steps>li{counter-increment:s;position:relative;padding:8px 12px 8px 52px;margin-bottom:8px;background:var(--card);border:1px solid var(--line);border-radius:8px}
+.steps>li::before{content:counter(s);position:absolute;left:12px;top:8px;width:28px;height:28px;border-radius:50%;background:var(--green);color:#fff;text-align:center;line-height:28px;font-weight:700}
+table{width:100%;border-collapse:collapse;font-size:.95rem;margin:10px 0 16px;background:var(--card)}
+th,td{border:1px solid var(--line);padding:6px 9px;text-align:left;vertical-align:top}
+th{background:var(--green-l);color:var(--green-d)}
+.tblwrap{overflow-x:auto}
+.flow{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin:12px 0}
+.flow span{background:var(--green-l);border:1px solid #b7d1bf;padding:5px 11px;border-radius:6px;font-size:.92rem}
+.flow i{color:var(--gold);font-style:normal;font-weight:700}
+.pill{display:inline-block;font-size:.78rem;padding:0 9px;border-radius:99px;border:1px solid var(--line);background:var(--gold-l);color:#6b5210}
+.pill.g{background:var(--green-l);color:var(--green-d);border-color:#b7d1bf}
+.pill.r{background:#f6dfda;color:var(--red);border-color:#e3b8af}
+.pill.a{background:#f8ead0;color:var(--amber);border-color:#e6cd9b}
+details{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:8px 14px;margin-bottom:8px}
+summary{cursor:pointer;font-weight:700;color:var(--green-d)}
+details[open] summary{margin-bottom:6px}
+dl{margin:0} dt{font-weight:700;color:var(--green-d);margin-top:.7em} dd{margin:0 0 .2em 0}
+footer.site{background:var(--green-d);color:#cfe0d4;text-align:center;padding:18px 12px;border-top:4px solid var(--gold);font-size:.95rem}
+footer.site b{color:var(--gold-l)}
+@media (max-width:860px){
+  .layout{grid-template-columns:1fr}
+  aside.toc{position:static;max-height:none}
+  aside.toc .tocbody{display:none}
+  aside.toc.open .tocbody{display:block}
+  .tocbtn{display:block;width:100%;font-family:inherit;font-size:1rem;background:var(--green);color:#fff;border:none;border-radius:6px;padding:8px;cursor:pointer}
+  aside.toc h4{display:none}
+}
+@media print{
+  @page{size:A4;margin:16mm}
+  body{background:#fff;font-size:12pt}
+  aside.toc,.printbtn,.tocbtn{display:none!important}
+  .layout{display:block;padding:0}
+  header.cover{border-bottom:3px double var(--gold);background:#fff;color:var(--ink);padding:0 0 10px}
+  header.cover h1{color:var(--green-d)} header.cover .sub,header.cover .meta{color:var(--muted)} .basmala{color:var(--green-d)}
+  h2{break-after:avoid;break-before:auto} h3{break-after:avoid}
+  .box,table,.steps>li,details{break-inside:avoid}
+  details>*{display:block}
+  footer.site{background:#fff;color:var(--muted);border-top:2px solid var(--gold)} footer.site b{color:var(--green-d)}
+  *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
+</style>
+</head>
+<body>
+
+<header class="cover">
+  <div class="basmala" lang="ar">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</div>
+  <h1>Contractor Start-Gap Compass</h1>
+  <div class="sub">User's Manual · <b>Creed-to-Commerce™</b> framework</div>
+  <div class="meta">The Balanced Middle Path Academy, LLC (BMPA) · Manual version 1.0 · November 2026</div>
+</header>
+
+<div class="layout">
+
+<aside class="toc" id="toc">
+  <button class="tocbtn" id="tocbtn">Contents ▾</button>
+  <h4>Contents</h4>
+  <div class="tocbody">
+    <ol>
+      <li><a href="#s1">1. What this app does</a></li>
+      <li><a href="#s2">2. Quick start</a></li>
+      <li><a href="#s3">3. The screen at a glance</a></li>
+      <li><a href="#s4">4. Why it happens</a></li>
+      <li><a href="#s5">5. Dynamics &amp; Excuse Test</a></li>
+      <li><a href="#s6">6. Industry impact &amp; calculator</a></li>
+      <li><a href="#s7">7. Diagnose: logging jobs</a></li>
+      <li><a href="#s8">8. Scorecard</a></li>
+      <li><a href="#s9">9. Framework &amp; Fixes</a></li>
+      <li><a href="#s10">10. The PDF report</a></li>
+      <li><a href="#s11">11. Your data: save, export, clear</a></li>
+      <li><a href="#s12">12. Assessing fairly</a></li>
+      <li><a href="#s13">13. Troubleshooting</a></li>
+      <li><a href="#s14">14. FAQ</a></li>
+      <li><a href="#s15">15. Glossary</a></li>
+      <li><a href="#s16">16. Reference tables</a></li>
+    </ol>
+    <button class="printbtn" onclick="window.print()">Save / Print this manual as PDF</button>
+  </div>
+</aside>
+
+<main>
+
+<section id="s1">
+<h2 style="margin-top:0">1. What this app does</h2>
+<p>The Contractor Start-Gap Compass helps you act as a business evaluator when residential contractors begin work later than they promised. It does five things:</p>
+<ul>
+  <li><b>Explains</b> why late starts happen and which workplace dynamics keep them going.</li>
+  <li><b>Measures</b> real jobs you have observed: how often starts are late, by how many days, for which stated reasons, and at what cost to the client.</li>
+  <li><b>Scores</b> a contractor or engagement process on six practices that prevent late starts.</li>
+  <li><b>Maps</b> the industries that carry the financial cost of a late start.</li>
+  <li><b>Prescribes</b> fixes through the Creed-to-Commerce™ Start-Gap framework, and produces a PDF report.</li>
+</ul>
+<p>The key idea: a start date is a <b>promise</b>. The <em>Start Gap</em> is the distance between the date that wins the job and the date the business can truly deliver.</p>
+<div class="box note"><b class="lead">Before you begin</b>The app starts completely empty. It contains no sample data. Everything in your results comes from what you enter. It runs in your web browser and needs no account and no sign-in.</div>
+<div class="box warn"><b class="lead">Not professional advice</b>The app is an educational diagnostic. The Start Covenant it generates is a discussion template. Neither is legal, financial, or contractual advice; have a qualified local professional review any agreement before it is signed.</div>
+</section>
+
+<section id="s2">
+<h2>2. Quick start</h2>
+<p>If you only have ten minutes, follow this path.</p>
+<ol class="steps">
+  <li>Open the app. Read <span class="tabref">Why it happens</span> for two minutes to frame the problem.</li>
+  <li>Go to <span class="tabref">Diagnose</span>. Enter a job you have observed: contractor or trade, promised start, actual start (leave blank if not started), the excuse given, and your verdict on it. Click <span class="btnref g">Add job</span>. Repeat for each job.</li>
+  <li>Go to <span class="tabref">Scorecard</span>. Fill in the contractor name, then rate each practice from 1 to 5.</li>
+  <li>Go to <span class="tabref">Industry impact</span>. Tick the industries that apply, and optionally enter per-day costs in the calculator.</li>
+  <li>Go to <span class="tabref">Framework &amp; Fixes</span>. Read the priority fixes the app drew from your scorecard.</li>
+  <li>Go to <span class="tabref">PDF Report</span> and click <span class="btnref">Save / Print PDF Report</span>. Choose <b>Save as PDF</b> in the print dialog.</li>
+</ol>
+<div class="box tip"><b class="lead">Tip</b>Your entries are saved automatically in your browser as you type or click. You do not need to press a save button. See <a href="#s11">Section 11</a> to export a backup.</div>
+</section>
+
+<section id="s3">
+<h2>3. The screen at a glance</h2>
+<p>The page has three zones.</p>
+<div class="tblwrap"><table>
+  <tr><th style="width:24%">Zone</th><th>What it contains</th></tr>
+  <tr><td><b>Green banner (top)</b></td><td>The Basmala, the app title, and four buttons: <span class="btnref">Save / Print PDF Report</span>, <span class="btnref">Export data (.json)</span>, <span class="btnref">Import data</span>, and <span class="btnref">Clear all data</span>.</td></tr>
+  <tr><td><b>Tab bar</b></td><td>Seven tabs, always visible as you scroll: Why it happens, Dynamics &amp; Excuse Test, Industry impact, Diagnose, Scorecard, Framework &amp; Fixes, PDF Report. On a phone, swipe the bar sideways to see them all.</td></tr>
+  <tr><td><b>Work area</b></td><td>The content of the selected tab.</td></tr>
+</table></div>
+<p>The tabs follow a natural order of work:</p>
+<div class="flow"><span>Understand</span><i>→</i><span>Test excuses</span><i>→</i><span>See the cost</span><i>→</i><span>Log jobs</span><i>→</i><span>Score</span><i>→</i><span>Fix</span><i>→</i><span>Report</span></div>
+<p>You can visit the tabs in any order. Information you enter on one tab is reused in the report automatically.</p>
+</section>
+
+<section id="s4">
+<h2>4. Why it happens</h2>
+<p>This tab is reading material. It opens with the evaluator's read, then lists ten root causes as cards. Each card shows:</p>
+<ul>
+  <li>A <b>who</b> label: Contractor, Supply chain, Regulatory, Environment, Client, or System.</li>
+  <li>A <b>foreseeability</b> label: <span class="pill r">Foreseeable</span> means the contractor could have anticipated it when promising the date; <span class="pill a">Partly</span> means it is real but still plannable.</li>
+  <li>A short explanation and a <b>Test it</b> question you can ask on site or on the phone.</li>
+</ul>
+<p>At the bottom, "The core insight" shows the self-reinforcing loop: an optimistic date wins the job, the pipeline fills, an earlier job overruns, the start slips, nothing happens to the contractor, and the same optimistic date is quoted again.</p>
+<div class="box tip"><b class="lead">How to use it</b>Carry the "Test it" questions into your conversations with clients and contractors. They convert a vague complaint ("he is always late") into evidence you can record.</div>
+</section>
+
+<section id="s5">
+<h2>5. Dynamics &amp; Excuse Test</h2>
+<h3>5.1 Workplace dynamics</h3>
+<p>Ten cards describe habits and incentives that sustain late starts, such as slot-hoarding, vague-date shelter, and blame diffusion. Each card gives <b>What happens</b>, <b>Why it persists</b>, and a <b>Signal to look for</b>, and carries a green tag naming the Creed-to-Commerce™ pillar that addresses it. Use the signals as an observation checklist.</p>
+
+<h3>5.2 The Excuse Test</h3>
+<p>The Excuse Test judges one excuse by the same five questions every time, so your verdicts stay consistent.</p>
+<ol class="steps">
+  <li>Think of one excuse you were given.</li>
+  <li>Answer each of the five Yes/No questions about it.</li>
+  <li>When all five are answered, the verdict appears below the questions.</li>
+</ol>
+<div class="tblwrap"><table>
+  <tr><th>Yes answers</th><th>Verdict</th><th>Meaning</th></tr>
+  <tr><td>4 or 5</td><td><span class="pill g">Legitimate</span></td><td>Reasonable grounds. Record it, agree a revised date, treat as a one-off.</td></tr>
+  <tr><td>3</td><td><span class="pill a">Partly legitimate</span></td><td>Part of the cause was real, part avoidable. Ask for the missing notice or mitigation.</td></tr>
+  <tr><td>0 to 2</td><td><span class="pill r">Weak excuse</span></td><td>Foreseeable or poorly handled; points to a planning or accountability gap.</td></tr>
+</table></div>
+<p>Click <span class="btnref o">Reset test</span> to clear the answers and test a different excuse.</p>
+<div class="box note"><b class="lead">Good to know</b>The Excuse Test is a stand-alone aid. It does not feed the Diagnose table or the PDF report. When you reach a verdict you want on record, enter it in the <b>Your verdict on the excuse</b> field when you log the job (<a href="#s7">Section 7</a>).</div>
+</section>
+
+<section id="s6">
+<h2>6. Industry impact &amp; calculator</h2>
+<h3>6.1 Industries financially affected</h3>
+<p>Thirteen cards describe how a late start moves cost into other businesses, from homeowners and lenders to materials suppliers, insurers, and local government. The last card, small commercial fit-outs (cafés and retail), is marked <em>adjacent</em> because it falls just outside residential work but shares the same mechanism.</p>
+<p>Tick the checkbox on each industry relevant to your assessment. Ticked industries appear in <b>Section 4</b> of the PDF report. Untick to remove.</p>
+
+<h3>6.2 Cost-of-delay calculator</h3>
+<p>The calculator turns your own per-day figures into a total. Nothing is pre-filled.</p>
+<ol class="steps">
+  <li>Choose a <b>Currency</b> (USD, SAR, MYR, AED, EUR, or GBP). The symbol applies everywhere money appears in the app and report.</li>
+  <li>Enter the <b>Days of delay</b>.</li>
+  <li>Enter any per-day amounts that apply: temporary housing or overlapping rent, storage and moving, loan interest or carrying cost, lost rental or business income, lost work time waiting at the site, and other.</li>
+  <li>Read the three results: daily cost of delay, days of delay, and total client cost.</li>
+</ol>
+<p>Two buttons sit below the results:</p>
+<ul>
+  <li><span class="btnref g">Use daily total in job form</span> copies the daily cost into the <b>Client cost per day of delay</b> field on the Diagnose tab and takes you there. It requires at least one per-day figure.</li>
+  <li><span class="btnref o">Clear calculator</span> empties the days and all per-day lines but keeps your chosen currency.</li>
+</ul>
+<p>If the total is above zero, it appears in <b>Section 5</b> of the PDF report.</p>
+</section>
+
+<section id="s7">
+<h2>7. Diagnose: logging jobs</h2>
+<p>This is the evidence engine. Each job you log adds to the statistics, charts, and pattern read.</p>
+
+<h3>7.1 The job form</h3>
+<div class="tblwrap"><table>
+  <tr><th style="width:26%">Field</th><th>What to enter</th><th style="width:14%">Required</th></tr>
+  <tr><td>Contractor / company</td><td>The business name.</td><td rowspan="2">One of these two</td></tr>
+  <tr><td>Trade</td><td>For example roofing, plumbing, painting.</td></tr>
+  <tr><td>Job value</td><td>The contract amount. It is stored with the job as a record, but it is not used in any calculation.</td><td>No</td></tr>
+  <tr><td>Client cost per day of delay</td><td>What each day of delay costs the client. Use the calculator (<a href="#s6">Section 6.2</a>) if unsure.</td><td>No, but needed for cost totals</td></tr>
+  <tr><td>Promised start</td><td>The date the contractor committed to.</td><td><b>Yes</b></td></tr>
+  <tr><td>Actual start</td><td>The date work really began. <b>Leave blank if work has not started.</b></td><td>No</td></tr>
+  <tr><td>Excuse given</td><td>Choose the closest category from the list (see <a href="#s16">Section 16</a>).</td><td>No</td></tr>
+  <tr><td>Your verdict on the excuse</td><td>Not assessed, Verified valid, Partly valid, or Not valid / weak.</td><td>No</td></tr>
+  <tr><td>Notes</td><td>What was said and what evidence you hold.</td><td>No</td></tr>
+</table></div>
+<p>Click <span class="btnref g">Add job</span>. If something is missing, a short message appears beside the button. After adding, the form clears, ready for the next job.</p>
+
+<h3>7.2 How each job is classified</h3>
+<div class="tblwrap"><table>
+  <tr><th>Status</th><th>When it applies</th><th>Days late</th></tr>
+  <tr><td><span class="pill g">On time</span></td><td>Actual start is on or before the promised date.</td><td>0</td></tr>
+  <tr><td><span class="pill r">Started late</span></td><td>Actual start is after the promised date.</td><td>Actual minus promised</td></tr>
+  <tr><td><span class="pill r">Overdue, not started</span></td><td>No actual start, and the promised date has passed.</td><td>Today minus promised (it grows daily)</td></tr>
+  <tr><td><span class="pill">Not yet due</span></td><td>No actual start, and the promised date is still ahead.</td><td>Not counted yet</td></tr>
+</table></div>
+<div class="box tip"><b class="lead">Worked example (illustrative numbers only)</b>A roofer promised 1 September and started on 20 September: 19 days late. At a client cost of 100 per day, the recorded cost is 19 × 100 = 1,900. A painter promised 1 October who has not started is "Overdue" and accrues a day of delay each day the page is viewed.</div>
+
+<h3>7.3 The results panel</h3>
+<p>Once at least one job exists, the following appear above the table:</p>
+<ul>
+  <li><b>Five figures:</b> jobs logged, percent late of jobs due, average days late, longest delay, and recorded client cost. "Jobs due" excludes jobs not yet due. "Recorded client cost" adds days late × cost per day across late and overdue jobs.</li>
+  <li><b>Evaluator's pattern read:</b> plain-language findings generated from your data, for example whether late starts are the majority outcome, how many cited foreseeable causes, how your verdicts split, which pillar the most frequent excuse points to, and the total cost.</li>
+  <li><b>Excuses given (late jobs):</b> a bar chart of how often each excuse was cited.</li>
+  <li><b>Job table:</b> every job with status, days late, excuse, and verdict.</li>
+</ul>
+<h3>7.4 Removing and clearing</h3>
+<p>Click <span class="btnref r">Remove</span> at the end of a row to delete that job. Click <span class="btnref r">Clear all jobs</span> under the table to remove all jobs after a confirmation. There is no edit button: to correct a job, remove it and add it again.</p>
+<div class="box note"><b class="lead">Foreseeability behind the pattern read</b>Each excuse category carries a built-in rating of whether it is normally foreseeable at signing: foreseeable (for example previous job overran, crew shortage, subcontractor no-show, cash flow, no reason given), partly foreseeable (materials, permits, weather, client-side, scope change, other), or genuinely unforeseeable (illness or emergency). The pattern read counts jobs by these ratings. They are general judgments, so always apply your own verdict for the specific case.</div>
+</section>
+
+<section id="s8">
+<h2>8. Scorecard</h2>
+<p>The scorecard measures how well a contractor, or the whole engagement process, has the practices in place that prevent late starts.</p>
+<ol class="steps">
+  <li>Optionally fill in <b>Contractor / process being assessed</b>, <b>Prepared by</b>, and <b>Project / site</b>. These print in the report header.</li>
+  <li>For each of the 18 practices, choose a rating from 1 to 5. Hover over a number to see its label.</li>
+  <li>Read the <b>Pillar results</b> panel, which updates as you click.</li>
+</ol>
+<div class="tblwrap"><table>
+  <tr><th>Rating</th><th>Label</th></tr>
+  <tr><td>1</td><td>Absent</td></tr><tr><td>2</td><td>Weak</td></tr><tr><td>3</td><td>Partial</td></tr><tr><td>4</td><td>Mostly in place</td></tr><tr><td>5</td><td>In place</td></tr>
+</table></div>
+<p>There are three practices under each of the six pillars. The panel shows each pillar's average out of 5 and an overall score. <b>Green bars</b> are at 3 or above; <b>red bars</b> are below 3 and mark the biggest gaps. Practices you leave unrated are excluded from the averages, and a pillar with no ratings shows "not rated".</p>
+<p>Click <span class="btnref o">Reset scorecard</span> to clear every rating after a confirmation. The three header fields are kept.</p>
+<div class="box tip"><b class="lead">Tip</b>Score from evidence, not impression. For each item ask "Can I point to a document, message, or date that shows this?" If not, rate it low.</div>
+</section>
+
+<section id="s9">
+<h2>9. Framework &amp; Fixes</h2>
+<h3>9.1 The Creed-to-Commerce™ Start-Gap framework</h3>
+<p>The tab opens with the creed behind the framework: in Creed-to-Commerce™, commercial conduct flows from a creed and stays accountable to it, and a spoken start date is treated as a binding covenant. Six pillars then turn that creed into operating practice:</p>
+<div class="tblwrap"><table>
+  <tr><th>#</th><th>Pillar</th><th>Core question</th></tr>
+  <tr><td>1</td><td><b>Niyyah</b> · Intention</td><td>Can the business honestly deliver this date?</td></tr>
+  <tr><td>2</td><td><b>ʿAhd</b> · Covenant</td><td>Is the promise written, dated, and backed by a remedy?</td></tr>
+  <tr><td>3</td><td><b>Bayān</b> · Clarity</td><td>Are scope, selections, permits, and responsibilities explicit?</td></tr>
+  <tr><td>4</td><td><b>Iʿdād</b> · Readiness</td><td>Are materials, crew, permits, and subs verified ready on schedule?</td></tr>
+  <tr><td>5</td><td><b>Muḥāsabah</b> · Accountability</td><td>Does one person own the start, and are slips reported early?</td></tr>
+  <tr><td>6</td><td><b>Iṣlāḥ</b> · Restoration</td><td>Is the loss repaired and the cause fixed so it does not recur?</td></tr>
+</table></div>
+<p>Each pillar has its own card with a purpose statement, <b>Contractor fixes</b>, <b>Client fixes</b>, and a <b>Measure</b> you can track over time.</p>
+
+<h3>9.2 Priority fixes from your scorecard</h3>
+<p>Once you have rated at least one practice, the gold panel lists the three lowest-scoring pillars with their contractor fixes, most urgent first. Before you rate anything it shows a prompt to complete the scorecard.</p>
+
+<h3>9.3 The 30-day rollout</h3>
+<p>A four-step schedule: days 1 to 7 capacity check and written start windows; days 8 to 14 lock scope, selections and permits; days 15 to 21 install the T-14 / T-7 / T-2 readiness gates; days 22 to 30 name a start owner, enforce the 24-hour late-notice rule, apply credits, and keep a slip log.</p>
+<div class="box note"><b class="lead">What T-14 / T-7 / T-2 means</b>Readiness checks held 14, 7, and 2 days before the start date: at T-14 materials and permits, at T-7 crew and subcontractors, at T-2 site access and the client.</div>
+
+<h3>9.4 The Start Covenant generator</h3>
+<p>This builds a one-page agreement from your entries.</p>
+<ol class="steps">
+  <li>Fill in any of: contractor, client, project address, scope summary, promised start date, grace window (days), late-start credit per day, credit cap, and late-notice rule (hours).</li>
+  <li>Tick each readiness item that has been confirmed: permit, materials ordered, crew named, subcontractor dates, client selections, site access, deposit purpose.</li>
+  <li>The preview appears below and updates as you type. Unfilled values show as blank lines (__________), and unticked readiness items show as <code>[ ]</code> so they remain visible as open items.</li>
+</ol>
+<p>The covenant covers promised start, readiness confirmations, written late notice, a per-day credit with cap, a release and refund option, record keeping, and signature lines. Click <span class="btnref o">Clear covenant</span> to empty all fields and ticks. Once any field or tick is filled, the covenant is added to the PDF report as Section 7.</p>
+<div class="box warn"><b class="lead">Caution</b>The covenant is a template, not a legal contract. Local law governs what remedies and deposit terms are enforceable. Have it reviewed before use.</div>
+</section>
+
+<section id="s10">
+<h2>10. The PDF report</h2>
+<p>The <span class="tabref">PDF Report</span> tab shows the exact document that will be saved. It is built live from everything you have entered.</p>
+
+<h3>10.1 What the report contains</h3>
+<div class="tblwrap"><table>
+  <tr><th style="width:8%">§</th><th style="width:30%">Section</th><th>Appears when</th></tr>
+  <tr><td>Header</td><td>Basmala, title, subject, project, prepared by, date</td><td>Always. The date is the day you print. Unfilled fields show "—".</td></tr>
+  <tr><td>1</td><td>Summary</td><td>Any data exists</td></tr>
+  <tr><td>2</td><td>Observed start performance</td><td>At least one job is logged: summary table, pattern read, and job table</td></tr>
+  <tr><td>3</td><td>Start-readiness scorecard</td><td>At least one practice rated: pillar bars and the three priority fixes</td></tr>
+  <tr><td>4</td><td>Industries financially affected</td><td>At least one industry ticked</td></tr>
+  <tr><td>5</td><td>Cost-of-delay estimate</td><td>Calculator total above zero</td></tr>
+  <tr><td>6</td><td>The Creed-to-Commerce™ framework</td><td>Any data exists: six pillars with measures, plus the 30-day rollout</td></tr>
+  <tr><td>7</td><td>Start Covenant</td><td>Any covenant field or tick is filled</td></tr>
+  <tr><td>Footer</td><td>Creed-to-Commerce™ and BMPA line, with the disclaimer</td><td>Always</td></tr>
+</table></div>
+<p>If you have entered nothing, the report shows only the header, a "No data entered yet" notice, and the footer. Sections with no data are simply left out, so the report never shows empty headings.</p>
+
+<h3>10.2 Saving as PDF</h3>
+<ol class="steps">
+  <li>Click <span class="btnref">Save / Print PDF Report</span> in the banner, or the same button at the top of the PDF Report tab.</li>
+  <li>In the print dialog, set the destination to <b>Save as PDF</b> (Chrome and Edge) or choose <b>PDF → Save as PDF</b> (Safari on Mac).</li>
+  <li>Keep paper size A4 or Letter and default margins. Click Save and choose a file name.</li>
+</ol>
+<p>The page is formatted for print: the banner, tabs, buttons, and footer are hidden and only the report is output.</p>
+<div class="box tip"><b class="lead">For a clean PDF</b>If shading or colours look faint, turn on <b>Background graphics</b> in the print dialog's more-settings area. If the Arabic Basmala looks plain, check your device was online when the page loaded so the Amiri font could download.</div>
+</section>
+
+<section id="s11">
+<h2>11. Your data: save, export, clear</h2>
+<h3>11.1 Automatic saving</h3>
+<p>Everything you enter is saved automatically to your browser's local storage on this device. Close the tab and come back later, and your work is still there, provided you use the same browser and device.</p>
+
+<h3>11.2 Export and import</h3>
+<ul>
+  <li><span class="btnref">Export data (.json)</span> downloads a backup file named <code>start-gap-compass-data.json</code> containing jobs, scores, ticks, calculator, covenant, excuse-test answers, and the header fields.</li>
+  <li><span class="btnref">Import data</span> opens a file picker. Choosing a backup file <b>replaces all current data</b> with the file's contents. If the file is not a valid backup, a message says it could not be read and nothing changes.</li>
+</ul>
+<h3>11.3 Clearing</h3>
+<div class="tblwrap"><table>
+  <tr><th>Control</th><th>What it clears</th></tr>
+  <tr><td><span class="btnref">Clear all data</span> (banner)</td><td>Everything, including saved browser data, after a confirmation. This cannot be undone.</td></tr>
+  <tr><td><span class="btnref r">Clear all jobs</span> (Diagnose)</td><td>All logged jobs only.</td></tr>
+  <tr><td><span class="btnref o">Reset scorecard</span> (Scorecard)</td><td>All ratings only.</td></tr>
+  <tr><td><span class="btnref o">Clear calculator</span> (Industry impact)</td><td>Days and per-day lines; currency is kept.</td></tr>
+  <tr><td><span class="btnref o">Clear covenant</span> (Framework &amp; Fixes)</td><td>All covenant fields and ticks.</td></tr>
+  <tr><td><span class="btnref o">Reset test</span> (Dynamics)</td><td>Excuse Test answers.</td></tr>
+</table></div>
+<div class="box warn"><b class="lead">Privacy and safekeeping</b>The app has no server and sends nothing over the internet; your entries stay on your device. This also means nobody can recover your data for you. Clearing the browser's site data, using a private window, or switching device removes access to it. Export regularly. Backup files contain names and notes in plain text, so store them securely, and clear or export-and-clear before using a shared computer.</div>
+</section>
+
+<section id="s12">
+<h2>12. Assessing fairly</h2>
+<p>The app is built to identify patterns, but its conclusions are only as sound as the evidence you give it. A credible evaluator is consistent and even-handed.</p>
+<ul>
+  <li><b>Record the client side too.</b> Late selections, blocked access, and late deposits are real causes. Log them honestly with the "Client-side" excuse; it makes your findings about contractors more credible.</li>
+  <li><b>Judge the same way every time.</b> Run each excuse through the Excuse Test before assigning a verdict, and write the evidence in the Notes field.</li>
+  <li><b>Look for repetition.</b> One late start may be bad luck. The same contractor, trade, or excuse across several jobs is a system problem.</li>
+  <li><b>Distinguish "valid" from "avoidable".</b> A real supplier shortage can be a true cause and still be a planning failure if the order was placed late.</li>
+  <li><b>Focus on the fix.</b> Use the gap ranking to open a calm, factual conversation about the specific practices that are missing.</li>
+</ul>
+</section>
+
+<section id="s13">
+<h2>13. Troubleshooting</h2>
+<div class="tblwrap"><table>
+  <tr><th style="width:34%">Problem</th><th>Cause and remedy</th></tr>
+  <tr><td>My data disappeared.</td><td>Data lives in one browser on one device. You may be in a private window, a different browser, or the site data was cleared. Re-import your latest exported backup.</td></tr>
+  <tr><td>"Add job" did nothing.</td><td>Read the message beside the button. A promised start date is required, plus a contractor or a trade.</td></tr>
+  <tr><td>A job shows "Overdue, not started", but it has started.</td><td>The actual start date is blank. Remove the job and add it again with the actual start date.</td></tr>
+  <tr><td>Days late changes from day to day.</td><td>That is expected for overdue jobs, which count up to today's date.</td></tr>
+  <tr><td>Recorded client cost is zero.</td><td>Cost is days late × cost per day. Enter a client cost per day on the job; the calculator can supply it.</td></tr>
+  <tr><td>"Use daily total in job form" shows an alert.</td><td>Enter at least one per-day figure in the calculator first.</td></tr>
+  <tr><td>The report is missing a section.</td><td>Sections appear only when their data exist. See the table in <a href="#s10">Section 10.1</a>.</td></tr>
+  <tr><td>The print dialog did not appear.</td><td>Your browser may be blocking it. Allow printing for the site, or press Ctrl+P (Windows) or Cmd+P (Mac) while on the PDF Report tab.</td></tr>
+  <tr><td>The PDF is cut off or the layout is odd.</td><td>Use A4 or Letter, default margins, and scale 100%. Print from a desktop browser for best results.</td></tr>
+  <tr><td>Import says the file could not be read.</td><td>Use only a file previously exported from this app, and do not edit it by hand.</td></tr>
+  <tr><td>The Arabic text or font looks plain.</td><td>The Amiri font loads from the internet. Reload while online; offline, the browser substitutes a standard font.</td></tr>
+</table></div>
+</section>
+
+<section id="s14">
+<h2>14. FAQ</h2>
+<details><summary>Does the app contain sample data?</summary>No. It opens empty by design. The worked example in this manual is illustrative only and is not loaded into the app.</details>
+<details><summary>Can I use it for commercial or non-residential jobs?</summary>The logic works for any contractor start. The guidance, cost lines, and industry cards are written for residential work, with one adjacent card for small commercial fit-outs.</details>
+<details><summary>Can I assess more than one contractor at a time?</summary>The job log holds many jobs from many contractors. The scorecard and report header describe one subject at a time, so for separate reports, export your data, clear, and start a fresh assessment for the next subject.</details>
+<details><summary>Can I edit a job after adding it?</summary>Not directly. Remove it and add it again with the corrected details.</details>
+<details><summary>Why is "Job value" not in any total?</summary>It is held as a reference for your records. The app measures delay and its cost to the client, not contract size.</details>
+<details><summary>Will two people see the same data?</summary>No. Data is stored per browser and per device. To share, send the exported <code>.json</code> file; the other person uses <b>Import data</b>.</details>
+<details><summary>Does it work offline?</summary>Once loaded, the app itself works without a connection. Only the Amiri font needs the internet; without it a standard font is used.</details>
+<details><summary>What do the Arabic pillar names mean?</summary>See <a href="#s15">Section 15</a>. They are the Creed-to-Commerce™ expressions of the six practices.</details>
+</section>
+
+<section id="s15">
+<h2>15. Glossary</h2>
+<dl>
+  <dt>Start Gap</dt><dd>The distance between the start date that won the job and the date the contractor can actually deliver.</dd>
+  <dt>Promised start</dt><dd>The date the contractor committed to, ideally in writing.</dd>
+  <dt>Grace window</dt><dd>Days after the promised start during which no credit accrues.</dd>
+  <dt>Late-start credit</dt><dd>A per-day amount the contractor credits the client when work has not begun after the grace window.</dd>
+  <dt>Foreseeable</dt><dd>Reasonably predictable at the time the date was promised.</dd>
+  <dt>Slot-hoarding</dt><dd>Accepting deposits to hold a place in line without matching capacity.</dd>
+  <dt>T-14 / T-7 / T-2</dt><dd>Readiness checkpoints 14, 7, and 2 days before the start.</dd>
+  <dt>Pillar</dt><dd>One of the six practice areas of the Creed-to-Commerce™ Start-Gap framework.</dd>
+  <dt>Niyyah</dt><dd>Intention: sincerity about what can really be delivered.</dd>
+  <dt>ʿAhd</dt><dd>Covenant: a binding, written promise with a remedy.</dd>
+  <dt>Bayān</dt><dd>Clarity: explicit, dated scope and responsibilities.</dd>
+  <dt>Iʿdād</dt><dd>Readiness: verified preparation before the start.</dd>
+  <dt>Muḥāsabah</dt><dd>Accountability: a named owner, early notice, and records.</dd>
+  <dt>Iṣlāḥ</dt><dd>Restoration: repairing the loss and correcting the cause.</dd>
+  <dt>Creed-to-Commerce™</dt><dd>The BMPA brand framework in which all business activity flows from, and remains accountable to, a creed.</dd>
+</dl>
+</section>
+
+<section id="s16">
+<h2>16. Reference tables</h2>
+<h3>16.1 Excuse categories and their foreseeability rating</h3>
+<div class="tblwrap"><table>
+  <tr><th>Excuse category</th><th>Rating</th><th>Maps to pillar</th></tr>
+  <tr><td>Previous job overran</td><td><span class="pill r">Foreseeable</span></td><td>Intention</td></tr>
+  <tr><td>Crew / labor shortage</td><td><span class="pill r">Foreseeable</span></td><td>Intention</td></tr>
+  <tr><td>Subcontractor no-show</td><td><span class="pill r">Foreseeable</span></td><td>Accountability</td></tr>
+  <tr><td>Cash flow / awaiting payment</td><td><span class="pill r">Foreseeable</span></td><td>Covenant</td></tr>
+  <tr><td>No reason given / unreachable</td><td><span class="pill r">Foreseeable</span></td><td>Accountability</td></tr>
+  <tr><td>Materials / supplier delay</td><td><span class="pill a">Partly</span></td><td>Readiness</td></tr>
+  <tr><td>Permit / inspection delay</td><td><span class="pill a">Partly</span></td><td>Readiness</td></tr>
+  <tr><td>Weather</td><td><span class="pill a">Partly</span></td><td>Readiness</td></tr>
+  <tr><td>Client-side (selections, access, payment)</td><td><span class="pill a">Partly</span></td><td>Clarity</td></tr>
+  <tr><td>Scope or design change</td><td><span class="pill a">Partly</span></td><td>Clarity</td></tr>
+  <tr><td>Other</td><td><span class="pill a">Partly</span></td><td>Accountability</td></tr>
+  <tr><td>Illness / family emergency</td><td><span class="pill g">Unforeseeable</span></td><td>Restoration</td></tr>
+</table></div>
+
+<h3>16.2 Tab-by-tab summary</h3>
+<div class="tblwrap"><table>
+  <tr><th>Tab</th><th>You do</th><th>Feeds the report</th></tr>
+  <tr><td>Why it happens</td><td>Read</td><td>No</td></tr>
+  <tr><td>Dynamics &amp; Excuse Test</td><td>Read; test excuses</td><td>No</td></tr>
+  <tr><td>Industry impact</td><td>Tick industries; use calculator</td><td>Sections 4 and 5</td></tr>
+  <tr><td>Diagnose</td><td>Log jobs</td><td>Section 2</td></tr>
+  <tr><td>Scorecard</td><td>Rate 18 practices</td><td>Section 3 and header</td></tr>
+  <tr><td>Framework &amp; Fixes</td><td>Read; build covenant</td><td>Sections 6 and 7</td></tr>
+  <tr><td>PDF Report</td><td>Review; print or save</td><td>This is the report</td></tr>
+</table></div>
+</section>
+
+</main>
+</div>
+
+<footer class="site">
+  <b>Creed-to-Commerce™</b> · The Balanced Middle Path Academy, LLC (BMPA)<br>
+  <span style="font-size:.85rem">Contractor Start-Gap Compass User's Manual · Educational tool. Not legal, financial, or contractual advice.</span>
+</footer>
+
+<script>
+(function(){
+  var t=document.getElementById('tocbtn'),a=document.getElementById('toc');
+  t.addEventListener('click',function(){a.classList.toggle('open');});
+  a.querySelectorAll('a').forEach(function(l){l.addEventListener('click',function(){a.classList.remove('open');});});
+  window.addEventListener('beforeprint',function(){document.querySelectorAll('details').forEach(function(d){d.open=true;});});
+})();
+</script>
+</body>
+</html>
